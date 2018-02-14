@@ -30,7 +30,6 @@
 import re
 from keyword   import iskeyword
 from binascii  import hexlify, unhexlify
-from math      import log, ceil
 from functools import reduce
 from struct    import pack, unpack
 
