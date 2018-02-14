@@ -1296,7 +1296,9 @@ def bytes_to_uint(buf, bitlen=1):
         long enough
     """
     # leverage Python2 built-in conversion: str to hex encoding
-    if bitlen <= 0:
+    if bitlen == 0:
+        return None
+    if bitlen < 0:
         raise(PycrateErr('bitlen must be strictly positive'))
     len_byte, len_bit = bitlen>>3, bitlen%8
     if len_bit:
@@ -1333,7 +1335,7 @@ def uint_to_bytes(val, bitlen=1):
         PycrateErr : if `bitlen' is not strictly positive
     """
     # Python2 built-in conversion: hex to str decoding
-    if bitlen <= 0:
+     if bitlen <= 0:
         raise(PycrateErr('bitlen must be strictly positive'))
     len_byte, len_bit = bitlen>>3, bitlen % 8
     # if len_bit, need padding bits appended rightmost
